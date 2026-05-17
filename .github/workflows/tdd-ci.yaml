@@ -3,7 +3,6 @@ name: Java TDD Automation CI
 # 코드가 Push되거나 Pull Request가 열릴 때 자동으로 실행
 on:
   push:
-    branches: [ "main", "master" ]
   pull_request:
     branches: [ "main", "master" ]
 
