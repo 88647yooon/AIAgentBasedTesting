@@ -204,7 +204,7 @@ public class Triangle
 				"Usage: java Quadrangle <side1:int> <side2:int> <side3:int>");
 			return;
 		}
-		System.out.println("Type: " + triangle.classify());
+		System.out.println("Type: " + triangle.getTypeFlags());
 		System.out.println("Triangle sides: " + triangle.getSideLengths());
 		System.out.println("Area: " + triangle.getArea());
 		System.out.println("Perimeter: " + triangle.getPerimeter());

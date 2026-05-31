@@ -32,4 +32,4 @@ jobs:
     # 4. JUnit 5로 전체 테스트 케이스 자동 실행
     - name: Run All Tests
       run: |
-        java -jar lib/junit-platform-console-standalone-1.10.2.jar -cp . -c TriangleTest
+        java -jar lib/junit-platform-console-standalone-1.10.2.jar execute -cp . -c TriangleTest

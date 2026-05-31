@@ -55,10 +55,10 @@
 - [x] **Task 6.1: `getTypeFlags()`에 대한 Unit Testing 추가**
   - Mocking을 포함하여 작성.
   - 가능한 경우의 삼각형과 경계를 확인하는 테스트 케이스 필수 포함.
-- [ ] **Task 6.2: Integration Testing을 위한 Test Case 작성**
+- [x] **Task 6.2: Integration Testing을 위한 Test Case 작성**
   - 단위시험의 테스트 케이스 포함.
   - 통합시험을 위한 추가 테스트 케이스 반드시 추가.
-- [ ] **Task 6.3: Git Repository의 삼각형 판별 프로그램에 통합**
+- [x] **Task 6.3: Git Repository의 삼각형 판별 프로그램에 통합**
   - `getTypeFlags()` 기능을 `Triangle` 클래스에 구현 및 통합.
-- [ ] **Task 6.4: Integration Testing 수행 및 통과 확인**
+- [x] **Task 6.4: Integration Testing 수행 및 통과 확인**
   - 테스트 수행을 통한 Build Success 확인.

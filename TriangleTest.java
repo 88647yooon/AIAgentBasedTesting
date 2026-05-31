@@ -334,4 +334,53 @@ public class TriangleTest {
         // 원래 2,2,3은 직각삼각형이 아니지만, Mocking으로 인해 직각삼각형 속성이 포함되어야 함
         assertEquals("right-angled, isossceles", mockTriangle.getTypeFlags());
     }
+
+    // =========================================================================
+    // 10. 통합 테스트 (Integration Testing) - Phase 6 Task 6.2
+    // 메인 메서드 실행 흐름과 콘솔 출력 결과 연동 검증
+    // =========================================================================
+
+    private String getConsoleOutput(Runnable runnable) {
+        java.io.ByteArrayOutputStream outContent = new java.io.ByteArrayOutputStream();
+        java.io.PrintStream originalOut = System.out;
+        System.setOut(new java.io.PrintStream(outContent));
+        try {
+            runnable.run();
+        } finally {
+            System.setOut(originalOut);
+        }
+        return outContent.toString();
+    }
+
+    @Test
+    public void testIntegration_Main_RightAngledScalene() {
+        // 단위 테스트 케이스(3,4,5)를 포함하여 전체 시스템(메인 흐름) 테스트
+        String output = getConsoleOutput(() -> {
+            Triangle.main(new String[]{"3", "4", "5"});
+        });
+        
+        // main 메소드가 출력하는 전체 포맷 검증 (getTypeFlags 적용됨)
+        assertTrue(output.contains("Type: right-angled, scalene"));
+        assertTrue(output.contains("Triangle sides: 3,4,5"));
+        assertTrue(output.contains("Area: 6.0"));
+        assertTrue(output.contains("Perimeter: 12"));
+    }
+
+    @Test
+    public void testIntegration_Main_InvalidArguments_Count() {
+        // 통합 테스트: 인자 개수 부족
+        String output = getConsoleOutput(() -> {
+            Triangle.main(new String[]{"3", "4"});
+        });
+        assertTrue(output.contains("Usage: java Quadrangle <side1:int> <side2:int> <side3:int>"));
+    }
+
+    @Test
+    public void testIntegration_Main_InvalidArguments_Type() {
+        // 통합 테스트: 숫자가 아닌 문자열 입력
+        String output = getConsoleOutput(() -> {
+            Triangle.main(new String[]{"a", "b", "c"});
+        });
+        assertTrue(output.contains("Usage: java Quadrangle <side1:int> <side2:int> <side3:int>"));
+    }
 }
