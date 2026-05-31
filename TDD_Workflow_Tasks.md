@@ -45,3 +45,20 @@
   - 구문, 분기, MC/DC 커버리지가 설정한 목표치(예: 100%)에 도달했는지 확인.
 - [ ] **Task 5.3: 결과 리포트(Summary) 생성**
   - 작성된 테스트 케이스 수, 발견된 잠재적 버그, 커버리지 결과 등을 요약하여 출력.
+
+#### Phase 6: 복수 속성 확인 기능(`getTypeFlags()`) 추가 및 통합 테스트
+- **목표**: 기존 `classify()` 메서드는 삼각형의 대표 유형 하나만 반환하므로, 삼각형의 복수 속성을 함께 확인할 수 있도록 `getTypeFlags()` 기능을 추가합니다.
+  - (3, 3, 3) : equilateral
+  - (3, 3, 4) : isosceles
+  - (3, 4, 5) : right-angled, scalene
+  - (4, 5, 6) : scalene
+- [x] **Task 6.1: `getTypeFlags()`에 대한 Unit Testing 추가**
+  - Mocking을 포함하여 작성.
+  - 가능한 경우의 삼각형과 경계를 확인하는 테스트 케이스 필수 포함.
+- [ ] **Task 6.2: Integration Testing을 위한 Test Case 작성**
+  - 단위시험의 테스트 케이스 포함.
+  - 통합시험을 위한 추가 테스트 케이스 반드시 추가.
+- [ ] **Task 6.3: Git Repository의 삼각형 판별 프로그램에 통합**
+  - `getTypeFlags()` 기능을 `Triangle` 클래스에 구현 및 통합.
+- [ ] **Task 6.4: Integration Testing 수행 및 통과 확인**
+  - 테스트 수행을 통한 Build Success 확인.

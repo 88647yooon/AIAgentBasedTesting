@@ -120,6 +120,36 @@ public class Triangle
 	}
 
 	
+	public String getTypeFlags()
+	{
+		if (isImpossible())
+		{
+			return P_IMPOSSIBLE;
+		}
+
+		java.util.List<String> flags = new java.util.ArrayList<>();
+
+		if (isRightAngled())
+		{
+			flags.add(P_RIGHTANGLED);
+		}
+
+		if (side1 == side2 && side2 == side3)
+		{
+			flags.add(P_EQUILATERAL);
+		}
+		else if (side1 == side2 || side2 == side3 || side1 == side3)
+		{
+			flags.add(P_ISOSCELES);
+		}
+		else
+		{
+			flags.add(P_SCALENE);
+		}
+
+		return String.join(", ", flags);
+	}
+	
 	/**
 	 * Checks if the triangle is right-angled. Note: right-angled triangle may
 	 * also be isosceles.

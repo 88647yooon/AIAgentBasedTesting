@@ -280,4 +280,58 @@ public class TriangleTest {
         assertEquals(6442450941L, t.getPerimeter(), "Perimeter는 3 * Integer.MAX_VALUE 여야 함");
         assertTrue(t.getArea() > 0, "오버플로우로 인해 넓이가 잘못 계산되면 안 됨");
     }
+
+    // =========================================================================
+    // 9. getTypeFlags() 메서드 테스트 (Phase 6 - Task 6.1)
+    // =========================================================================
+
+    @Test
+    public void testGetTypeFlags_Equilateral() {
+        Triangle t = new Triangle(3, 3, 3);
+        assertEquals("equilateral", t.getTypeFlags());
+    }
+
+    @Test
+    public void testGetTypeFlags_Isosceles() {
+        Triangle t = new Triangle(3, 3, 4);
+        assertEquals("isossceles", t.getTypeFlags());
+    }
+
+    @Test
+    public void testGetTypeFlags_RightAngledAndScalene() {
+        Triangle t = new Triangle(3, 4, 5);
+        assertEquals("right-angled, scalene", t.getTypeFlags());
+    }
+
+    @Test
+    public void testGetTypeFlags_Scalene() {
+        Triangle t = new Triangle(4, 5, 6);
+        assertEquals("scalene", t.getTypeFlags());
+    }
+
+    @Test
+    public void testGetTypeFlags_Impossible() {
+        Triangle t = new Triangle(0, 0, 0);
+        assertEquals("impossible", t.getTypeFlags());
+    }
+
+    @Test
+    public void testGetTypeFlags_BoundaryMax() {
+        Triangle t = new Triangle(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
+        assertEquals("equilateral", t.getTypeFlags());
+    }
+
+    @Test
+    public void testGetTypeFlags_MockingRightAngled() {
+        // Mocking을 포함한 단위 테스트 (수동 Mock 객체 사용)
+        // isRightAngled()를 true로 강제 반환하도록 오버라이드 (Mocking)
+        Triangle mockTriangle = new Triangle(2, 2, 3) {
+            @Override
+            public boolean isRightAngled() {
+                return true;
+            }
+        };
+        // 원래 2,2,3은 직각삼각형이 아니지만, Mocking으로 인해 직각삼각형 속성이 포함되어야 함
+        assertEquals("right-angled, isossceles", mockTriangle.getTypeFlags());
+    }
 }
