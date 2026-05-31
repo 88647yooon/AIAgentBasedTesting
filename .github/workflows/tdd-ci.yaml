@@ -27,9 +27,9 @@ jobs:
     # 3. 소스 및 테스트 코드 컴파일
     - name: Compile Java Files
       run: |
-        javac -cp ".:lib/*" Triangle.java TriangleTest.java
+        javac -encoding UTF-8 -cp ".:lib/*" Triangle.java TriangleTest.java
 
-    # 4. JUnit 5로 30개 테스트 케이스 자동 실행
-    - name: Run All 30 Tests
+    # 4. JUnit 5로 전체 테스트 케이스 자동 실행
+    - name: Run All Tests
       run: |
         java -jar lib/junit-platform-console-standalone-1.10.2.jar -cp . -c TriangleTest
