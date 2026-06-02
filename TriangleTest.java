@@ -354,7 +354,7 @@ public class TriangleTest {
 
     @Test
     public void testIntegration_Main_RightAngledScalene() {
-        // 단위 테스트 케이스(3,4,5)를 포함하여 전체 시스템(메인 흐름) 테스트
+        
         String output = getConsoleOutput(() -> {
             Triangle.main(new String[]{"3", "4", "5"});
         });
@@ -382,5 +382,45 @@ public class TriangleTest {
             Triangle.main(new String[]{"a", "b", "c"});
         });
         assertTrue(output.contains("Usage: java Quadrangle <side1:int> <side2:int> <side3:int>"));
+    }
+
+    @Test
+    public void testIntegration_Main_Equilateral() {
+        // 통합 테스트: 정삼각형
+        String output = getConsoleOutput(() -> {
+            Triangle.main(new String[]{"3", "3", "3"});
+        });
+        assertTrue(output.contains("Type: equilateral"));
+        assertTrue(output.contains("Triangle sides: 3,3,3"));
+    }
+
+    @Test
+    public void testIntegration_Main_Isosceles() {
+        // 통합 테스트: 이등변삼각형
+        String output = getConsoleOutput(() -> {
+            Triangle.main(new String[]{"3", "3", "4"});
+        });
+        assertTrue(output.contains("Type: isossceles"));
+        assertTrue(output.contains("Triangle sides: 3,3,4"));
+    }
+
+    @Test
+    public void testIntegration_Main_Scalene() {
+        // 통합 테스트: 일반 부등변삼각형
+        String output = getConsoleOutput(() -> {
+            Triangle.main(new String[]{"4", "5", "6"});
+        });
+        assertTrue(output.contains("Type: scalene"));
+        assertTrue(output.contains("Triangle sides: 4,5,6"));
+    }
+
+    @Test
+    public void testIntegration_Main_Impossible() {
+        // 통합 테스트: 삼각형 성립 불가
+        String output = getConsoleOutput(() -> {
+            Triangle.main(new String[]{"1", "2", "3"});
+        });
+        assertTrue(output.contains("Type: impossible"));
+        assertTrue(output.contains("Triangle sides: 1,2,3"));
     }
 }
